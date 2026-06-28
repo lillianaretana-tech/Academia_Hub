@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academias — Formación Corporativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1220; --ink-2:#161B2E; --ink-3:#222A42;
+  --paper:#F6F3EC; --paper-2:#FFFFFF; --paper-3:#EFEBE0;
+  --brass:#C39A45; --brass-deep:#A07E2E; --brass-soft:#E6CE8C;
+  --sage:#5E9A7C; --sage-soft:#DDEBE2;
+  --tx:#1B2233; --tx-soft:#5A6275; --tx-faint:#8A91A2; --line:#E0DACB;
+  --shadow:0 1px 2px rgba(14,18,32,.06),0 8px 28px -12px rgba(14,18,32,.18);
+  --shadow-lg:0 24px 60px -20px rgba(14,18,32,.45);
+  --r:16px; --r-sm:11px; --r-lg:24px; --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--paper);color:var(--tx);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;line-height:1.12;letter-spacing:-.01em}
+.mono{font-family:'IBM Plex Mono',monospace}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:6px}
+
+/* Encabezado / hero */
+.top{background:
+    radial-gradient(900px 460px at 85% -10%,rgba(195,154,69,.22),transparent 60%),
+    radial-gradient(700px 400px at -5% 110%,rgba(94,154,124,.14),transparent 55%),
+    linear-gradient(120deg,var(--ink) 0%,#1a2138 100%);
+  color:var(--paper);padding:46px 24px 64px}
+.wrap{max-width:1120px;margin:0 auto}
+.brandmark{display:flex;align-items:center;gap:14px;margin-bottom:42px}
+.seal{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--brass-soft),var(--brass-deep));
+  font-family:'Fraunces',serif;font-weight:700;font-size:26px;color:var(--ink);
+  box-shadow:0 6px 16px -6px rgba(195,154,69,.6)}
+.brandmark .bn{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1.05;color:#fff}
+.brandmark .bs{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-soft);font-weight:600}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-soft);font-weight:600;margin-bottom:14px}
+.top h1{font-size:2.9rem;font-weight:600;color:#fff;max-width:16ch;margin-bottom:14px}
+.top p{color:#c0c5d4;max-width:54ch;font-size:1.1rem}
+.hero-stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.hstat .n{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;color:#fff;line-height:1}
+.hstat .l{font-size:.78rem;color:#aeb4c4;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+/* Grid de academias */
+.section{max-width:1120px;margin:-32px auto 0;padding:0 24px 70px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin:38px 4px 18px;flex-wrap:wrap;gap:8px}
+.sec-head h2{font-size:1.5rem;font-weight:600}
+.sec-head span{font-size:.85rem;color:var(--tx-soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px}
+
+.acad{position:relative;display:flex;flex-direction:column;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:28px;box-shadow:var(--shadow);transition:.22s var(--ease);overflow:hidden}
+.acad.live{cursor:pointer}
+.acad.live:hover{transform:translateY(-5px);border-color:var(--brass);box-shadow:var(--shadow-lg)}
+.acad.soon{opacity:.72}
+.acad::after{content:"";position:absolute;inset:0 0 auto 0;height:4px;
+  background:linear-gradient(90deg,var(--brass),var(--brass-deep));opacity:0;transition:.22s}
+.acad.live:hover::after{opacity:1}
+.acad-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.aico{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;font-size:1.7rem;
+  background:var(--paper-3)}
+.acad.live .aico{background:linear-gradient(140deg,var(--brass-soft),var(--brass-deep))}
+.atag{font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.34rem .7rem;border-radius:99px}
+.atag.live{background:var(--sage-soft);color:#2c5a44}
+.atag.soon{background:var(--paper-3);color:var(--tx-soft)}
+.acad h3{font-size:1.45rem;font-weight:600;margin-bottom:5px}
+.acad .sub{color:var(--brass-deep);font-weight:600;font-size:.92rem;margin-bottom:12px}
+.acad .desc{color:var(--tx-soft);font-size:.95rem;line-height:1.55;flex:1}
+.acad-meta{display:flex;gap:16px;margin:18px 0 20px;padding-top:16px;border-top:1px solid var(--line)}
+.acad-meta .mm{display:flex;flex-direction:column}
+.acad-meta .mm .v{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.05rem;color:var(--tx)}
+.acad-meta .mm .k{font-size:.72rem;color:var(--tx-faint);text-transform:uppercase;letter-spacing:.05em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:1rem;
+  padding:.85rem 1.4rem;border-radius:var(--r-sm);transition:.18s var(--ease);width:100%}
+.btn-brass{background:linear-gradient(135deg,var(--brass),var(--brass-deep));color:#fff;box-shadow:0 8px 20px -10px rgba(163,126,46,.7)}
+.btn-brass:hover{filter:brightness(1.06)}
+.btn-soon{background:var(--paper-3);color:var(--tx-faint);cursor:not-allowed}
+.btn-warn{background:#f6ecd2;color:var(--brass-deep);border:1px dashed var(--brass)}
+
+.note{display:flex;gap:12px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);
+  border-left:4px solid var(--brass);border-radius:var(--r-sm);padding:16px 18px;margin-top:30px;
+  font-size:.92rem;color:var(--tx-soft);box-shadow:var(--shadow)}
+.note b{color:var(--tx)}
+.foot{text-align:center;color:var(--tx-faint);font-size:.82rem;padding:30px 24px 40px}
+
+@media(max-width:680px){
+  .top{padding:34px 20px 56px}
+  .top h1{font-size:2.1rem}
+  .section{padding:0 18px 60px}
+  .grid{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandmark">
+      <div class="seal">A</div>
+      <div><div class="bn">Academias</div><div class="bs">Formación Corporativa</div></div>
+    </div>
+    <div class="hero-eyebrow">Plataforma de formación</div>
+    <h1>Una academia para cada salto profesional</h1>
+    <p>Programas de formación práctica para equipos operativos: liderazgo, salas limpias, inteligencia artificial y más. Elegí tu academia y empezá.</p>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="sec-head"><h2>Academias disponibles</h2><span id="liveCount"></span></div>
+  <div class="grid" id="gridLive"></div>
+
+  <div class="sec-head" id="soonHead" style="display:none"><h2>Próximamente</h2><span>En desarrollo</span></div>
+  <div class="grid" id="gridSoon"></div>
+
+  <div class="note">
+    <span style="font-size:1.1rem">ℹ️</span>
+    <div>Cada academia es independiente y tiene su <b>propio acceso</b>. La primera vez, creá tu cuenta dentro de cada una. Tu progreso y certificado se guardan por academia.</div>
+  </div>
+</main>
+
+<footer class="foot">Plataforma de formación corporativa · Hecho con dedicación 🤎</footer>
+
+<script>
+/* =================================================================
+   CONFIGURACIÓN — pegá aquí la URL pública de cada academia
+   (la dirección de GitHub Pages donde está cada HTML).
+   Si una URL queda vacía, la academia se muestra como "Próximamente".
+   Para sumar una academia nueva: copiá un objeto y completalo.
+   ================================================================= */
+const ACADEMIES = [
+  {
+    id:"leadership",
+    nombre:"Leadership Mastery",
+    sub:"Academia para Nuevos Líderes Operativos",
+    icon:"🧭",
+    modulos:15,
+    formato:"Módulos + práctica",
+    desc:"Para quienes pasan de un puesto operativo a liderar. Mentalidad, comunicación, equipos, KPIs, seguridad y administración.",
+    url:"https://lillianaretana-tech.github.io/Leadership_mastery/"
+  },
+  {
+    id:"cleanroom",
+    nombre:"Cleanroom Mastery",
+    sub:"Salas limpias para pharma y manufactura",
+    icon:"🧪",
+    modulos:21,
+    formato:"Módulos + ejercicios",
+    desc:"Certificación en control de contaminación, gowning, SOP, integridad de datos y preparación para auditorías.",
+    url:"https://lillianaretana-tech.github.io/Cleanroom_mastery/"
+  },
+  {
+    id:"ia",
+    nombre:"IA para el Trabajo Real",
+    sub:"Programa de 30 días",
+    icon:"🤖",
+    modulos:30,
+    formato:"Reto diario · 8 módulos",
+    desc:"Aplicá inteligencia artificial a tareas reales del día a día. Un reto por día con ejemplos, ejercicios y prompts listos para usar.",
+    url:"https://lillianaretana-tech.github.io/IA_aprendizaje_trabajo/"
+  },
+  {
+    id:"safety",
+    nombre:"Safety Mastery",
+    sub:"Academia de Seguridad para Líderes Operativos",
+    icon:"🦺",
+    modulos:21,
+    formato:"Módulos + práctica",
+    desc:"Lo que el líder debe saber para proteger a su gente, los equipos, el cliente y la estructura: riesgos, controles, EPP, alturas, eléctrico, químicos, emergencias y más.",
+    url:"https://lillianaretana-tech.github.io/Safety_mastery/"
+  },
+  {
+    id:"supervisor",
+    nombre:"Supervisor Mastery",
+    sub:"Gestión operativa por indicadores",
+    icon:"📋",
+    modulos:18,
+    formato:"Módulos + examen + certificado",
+    desc:"Para supervisores que conducen líderes y operarios de limpieza. Gestión por indicadores, rutinas, calidad, seguridad, asistencia, materiales, quejas y mejora continua.",
+    url:"https://lillianaretana-tech.github.io/Supervisor_mastery/"
+  },
+  {
+    id:"service",
+    nombre:"Customer Service Mastery",
+    sub:"Servicio al cliente operativo",
+    icon:"🎯",
+    modulos:18,
+    formato:"Módulos + examen + certificado",
+    desc:"Para equipos operativos que atienden clientes internos y externos. Escucha, quejas, comunicación, promesas, seguimiento, recuperación del servicio y criterio profesional.",
+    url:"https://lillianaretana-tech.github.io/Customer_mastery/"
+  }
+];
+
+const isLive = a => a.url && !a.url.startsWith("PEGAR_");
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function cardHTML(a){
+  const live=isLive(a);
+  const onclick = live ? `onclick="abrir('${a.id}')"` : "";
+  return `<article class="acad ${live?"live":"soon"}" ${onclick}>
+    <div class="acad-top">
+      <div class="aico">${a.icon||"🎓"}</div>
+      <span class="atag ${live?"live":"soon"}">${live?"Activa":"Próximamente"}</span>
+    </div>
+    <h3>${esc(a.nombre)}</h3>
+    <div class="sub">${esc(a.sub)}</div>
+    <div class="desc">${esc(a.desc)}</div>
+    <div class="acad-meta">
+      <div class="mm"><span class="v">${a.modulos!=null?a.modulos:"—"}</span><span class="k">Módulos</span></div>
+      <div class="mm"><span class="v" style="font-size:.92rem">${esc(a.formato||"")}</span><span class="k">Formato</span></div>
+    </div>
+    ${live
+      ? `<button class="btn btn-brass">Entrar a la academia →</button>`
+      : `<button class="btn btn-soon" disabled>En desarrollo</button>`}
+  </article>`;
+}
+
+function abrir(id){
+  const a=ACADEMIES.find(x=>x.id===id); if(!a||!isLive(a)) return;
+  window.open(a.url,"_blank","noopener");
+}
+
+function render(){
+  const live=ACADEMIES.filter(isLive);
+  const soon=ACADEMIES.filter(a=>!isLive(a));
+  document.getElementById("gridLive").innerHTML = live.length
+    ? live.map(cardHTML).join("")
+    : `<div class="note" style="grid-column:1/-1"><span>⚙️</span><div>Todavía no configuraste ninguna URL. Abrí este archivo y pegá la dirección de cada academia en el bloque <b>CONFIGURACIÓN</b> de arriba.</div></div>`;
+  document.getElementById("gridSoon").innerHTML = soon.map(cardHTML).join("");
+  document.getElementById("soonHead").style.display = soon.length ? "flex" : "none";
+
+  const totMod = live.reduce((s,a)=>s+(a.modulos||0),0);
+  document.getElementById("liveCount").textContent = `${live.length} ${live.length===1?"academia":"academias"}`;
+  document.getElementById("heroStats").innerHTML = `
+    <div class="hstat"><div class="n">${live.length}</div><div class="l">Academias activas</div></div>
+    <div class="hstat"><div class="n">${totMod||"—"}</div><div class="l">Módulos en total</div></div>
+    <div class="hstat"><div class="n">${ACADEMIES.length}</div><div class="l">En el catálogo</div></div>`;
+}
+render();
+</script>
+</body>
+</html>
